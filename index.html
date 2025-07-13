@@ -76,6 +76,20 @@
         </a>
 
     </main>
+<script>
+window.onload = function () {
+  show_9564359({
+    type: 'inApp',
+    inAppSettings: {
+      frequency: 2,     // Show 2 ads
+      capping: 0.1,     // Within 6 minutes
+      interval: 30,     // 30 seconds apart
+      timeout: 5,       // 5 seconds delay before first ad
+      everyPage: false  // Don't reset session on page change
+    }
+  });
+};
+</script>
 
 </body>
 </html>
