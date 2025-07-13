@@ -561,11 +561,17 @@
 
 <script>
 function copyText(button) {
-      const text = button.parentElement.querySelector('.pickup-line').innerText;
-      const cleanedText = text.replace(/^\d+\.\s*/, '');
-      navigator.clipboard.writeText(cleanedText);
-      button.innerText = "Copied!";
-      setTimeout(() => button.innerText = "Copy", 1500);
+  // 1. Copy the text
+  const text = button.parentElement.querySelector('.pickup-line').innerText;
+  const cleanedText = text.replace(/^\d+\.\s*/, '');
+  navigator.clipboard.writeText(cleanedText);
+
+  // 2. Change button text
+  button.innerText = "Copied!";
+  setTimeout(() => button.innerText = "Copy", 1500);
+
+  // 3. Open your Adsterra direct link
+  window.open("https://www.profitableratecpm.com/bf4ddfath?key=40c024ae759c3b49880d2259d673a59f", "_blank");
 }
 </script>
 
