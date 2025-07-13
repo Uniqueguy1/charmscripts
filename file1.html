@@ -559,13 +559,34 @@
 </div>
 
   <script>
-    function copyText(button) {
+    
+
+// Rewarded Popup
+
+show_9564359('pop').then(() => {
+    // user watch ad till the end or close it in interstitial format
+    // your code to reward user for rewarded format
+      function copyText(button) {
       const text = button.parentElement.querySelector('.pickup-line').innerText;
       const cleanedText = text.replace(/^\d+\.\s*/, ''); // Remove leading number and dot
       navigator.clipboard.writeText(cleanedText);
       button.innerText = "Copied!";
       setTimeout(() => button.innerText = "Copy", 1500);
     }
+}).catch(e => {
+    // user get error during playing ad
+    // do nothing or whatever you want
+      function copyText(button) {
+      const text = button.parentElement.querySelector('.pickup-line').innerText;
+      const cleanedText = text.replace(/^\d+\.\s*/, ''); // Remove leading number and dot
+      navigator.clipboard.writeText(cleanedText);
+      button.innerText = "Copied!";
+      setTimeout(() => button.innerText = "Copy", 1500);
+    }
+})
+
+        
+
   </script>
 
 </body>
