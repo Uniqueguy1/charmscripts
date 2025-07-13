@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>100 Pickup Lines for a Handsome Guy</title>
-  <script src='//libtl.com/sdk.js' data-zone='9564359' data-sdk='show_9564359'></script>
+  
   <style>
     .grid {
       display: grid;
@@ -561,24 +561,11 @@
 
 <script>
 function copyText(button) {
-  // Show the ad first
-  show_9564359('pop')
-    .then(() => {
-      // Ad watched fully or closed — reward the user
       const text = button.parentElement.querySelector('.pickup-line').innerText;
       const cleanedText = text.replace(/^\d+\.\s*/, '');
       navigator.clipboard.writeText(cleanedText);
       button.innerText = "Copied!";
       setTimeout(() => button.innerText = "Copy", 1500);
-    })
-    .catch((e) => {
-      // Ad failed — still allow the copy
-      const text = button.parentElement.querySelector('.pickup-line').innerText;
-      const cleanedText = text.replace(/^\d+\.\s*/, '');
-      navigator.clipboard.writeText(cleanedText);
-      button.innerText = "Copied!";
-      setTimeout(() => button.innerText = "Copy", 1500);
-    });
 }
 </script>
 
