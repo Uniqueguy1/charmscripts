@@ -13,56 +13,45 @@
       background: #f5f5f5;
     }
     .site-header {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      text-align: center;
       background: #fff;
       height: 60px;
+      line-height: 60px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
-    .logo {
-      font-size: 24px;
-      font-weight: bold;
-      text-decoration: none;
-      color: #000;
-    }
-    .logo span {
-      color: #c2185b;
-    }
+    .logo { font-size: 24px; font-weight: bold; color: #000; }
+    .logo span { color: #c2185b; }
+
     .unlock-button-top {
       text-align: center;
-      padding: 15px;
+      margin: 20px 0;
     }
     .unlock-button-top button {
-      background-color: #c2185b;
+      background: #c2185b;
       color: white;
-      padding: 12px 25px;
+      padding: 10px 20px;
       border: none;
-      border-radius: 6px;
+      border-radius: 5px;
       font-size: 16px;
       cursor: pointer;
     }
     .card-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
+      gap: 15px;
       padding: 20px;
     }
     .card {
-      background: #fff;
+      background: white;
       border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      text-decoration: none;
-      color: #000;
       overflow: hidden;
-      transition: transform 0.2s;
-      height: 400px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      cursor: pointer;
       display: flex;
       flex-direction: column;
-      cursor: pointer;
-    }
-    .card:hover {
-      transform: scale(1.02);
+      text-decoration: none;
+      color: #000;
+      height: 380px;
     }
     .card img {
       width: 100%;
@@ -71,138 +60,86 @@
     }
     .card h3 {
       padding: 15px;
-      font-size: 18px;
-      font-weight: bold;
-      flex-grow: 1;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      font-size: 16px;
+    }
+    .padlock {
+      font-size: 18px;
+      color: #c2185b;
     }
     .modal {
       display: none;
       position: fixed;
       top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.5);
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
       justify-content: center;
       align-items: center;
-      z-index: 999;
     }
     .modal-content {
-      background: #fff;
-      padding: 30px;
-      border-radius: 10px;
+      background: white;
+      padding: 25px;
+      border-radius: 8px;
+      max-width: 300px;
       text-align: center;
-      max-width: 320px;
-    }
-    .modal-content h2 {
-      margin-bottom: 15px;
     }
     .modal-content p {
       font-size: 14px;
-      margin-bottom: 20px;
-      color: #555;
+      margin-bottom: 10px;
     }
     .modal-content button {
-      background-color: #c2185b;
+      background: #c2185b;
       color: white;
       border: none;
-      padding: 12px 20px;
+      padding: 10px 20px;
       border-radius: 5px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    @media screen and (max-width: 768px) {
-      .card-grid {
-        grid-template-columns: 1fr;
-        padding: 10px;
-      }
-      .card img {
-        height: 180px;
-      }
-      .unlock-button-top button {
-        width: 90%;
-      }
+      font-size: 15px;
     }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header class="site-header">
-    <a href="#" class="logo">Charim <span>SCRIPTS</span></a>
-  </header>
+  <div class="site-header">
+    <div class="logo">Charim <span>SCRIPTS</span></div>
+  </div>
 
-  <!-- Unlock All Button -->
   <div class="unlock-button-top">
     <button id="unlockBtn" onclick="payNow()">🔓 Unlock All Premium Lines – ₦1000</button>
   </div>
 
-  <!-- Notice -->
-  <p style="text-align:center; font-size:14px; color:#555; padding: 0 15px;">
-    🌍 International users can pay with card — your bank will auto-convert ₦1000.
-  </p>
-
-  <!-- Cards -->
   <main class="card-grid">
+    <!-- Free -->
+    <a href="file1.html" class="card"><img src="2675387.jpeg"><h3>100 Pickup Lines <span></span></h3></a>
 
-    <!-- Free Cards (clickable directly) -->
-    <a href="file1.html" class="card"><img src="2675387.jpeg"><h3>100 Pickup Lines for a Handsome Guy</h3></a>
-    <a href="file2.html" class="card"><img src="worlds-most-beautiful-nigerian-girl-jare-but-mofe-fb-png__700.jpg"><h3>100 Pickup Lines for a Beautiful Lady</h3></a>
-    <a href="file7.html" class="card"><img src="istockphoto-538483378-612x612.jpg"><h3>100 Pickup Lines That Belong in a Museum</h3></a>
-    <a href="file8.html" class="card"><img src="girl.jpeg"><h3>Steal His Heart All Over Again – 100 Pickup Lines for Boyfriends</h3></a>
-    <a href="file9.html" class="card"><img src="shy.jpeg"><h3>Pickup Lines for Shy Guys Who Still Want to Win</h3></a>
-    <a href="file11.html" class="card"><img src="jaizer-capangpangan-04SoDoueyF8-unsplash.jpg"><h3>Girl, Say This: Clever Pickup Lines to Break the Ice First</h3></a>
-    <a href="file12.html" class="card"><img src="15 Pickup Lines That Are Bold, Flirty, and Actually Fun.png"><h3>115 Pickup Lines That Are Bold, Flirty, and Actually Fun</h3></a>
-
-    <!-- Premium Locked Cards -->
-    <div class="card locked" data-url="file3.html">
-      <img src="istockphoto-936903524-612x612.jpg">
-      <h3><span>100 Pickup Lines That Break the Laws of Physics</span> <span class="padlock">🔐</span></h3>
+    <!-- Locked -->
+    <div class="card locked" data-url="file2.html">
+      <img src="girl.jpeg">
+      <h3>Premium Pickup Line <span class="padlock">🔐</span></h3>
     </div>
-    <div class="card locked" data-url="file4.html">
-      <img src="door-stretching-into-fantasy-world.png">
-      <h3><span>100 Pickup Lines from Another Dimension</span> <span class="padlock">🔐</span></h3>
-    </div>
-    <div class="card locked" data-url="file5.html">
-      <img src="steptodown.com557701.jpg">
-      <h3><span>100 Pickup Lines from the Lab of Love</span> <span class="padlock">🔐</span></h3>
-    </div>
-    <div class="card locked" data-url="file6.html">
-      <img src="I Portray The Feeling Of Ballet Dance In My Paintings To Show How Important Passion Is.jpeg">
-      <h3><span>100 Pickup Lines Painted with Passion</span> <span class="padlock">🔐</span></h3>
-    </div>
-    <div class="card locked" data-url="file10.html">
-      <img src="guy.jpeg">
-      <h3><span>Dude, Try This: Pickup Lines That Actually Work</span> <span class="padlock">🔐</span></h3>
-    </div>
-
   </main>
 
-  <!-- Payment Modal -->
+  <!-- Modal -->
   <div class="modal" id="payModal">
     <div class="modal-content">
-      <h2>Premium Content</h2>
-      <p>Unlock all premium pickup lines for ₦1000.</p>
-      <p style="font-size: 13px; color: #999;">
-        Payment is 100% secure and powered by Paystack. We do not store any of your card details.
-      </p>
+      <p>Unlock all premium lines for ₦1000</p>
+      <p style="color: #666;">Secure Payment Powered by Paystack 🔒</p>
       <button onclick="payNow()">Pay Now</button>
     </div>
   </div>
 
-  <!-- JS & Paystack -->
+  <!-- JS -->
   <script src="https://js.paystack.co/v1/inline.js"></script>
   <script>
+    const lockedCards = document.querySelectorAll(".locked");
     const modal = document.getElementById("payModal");
-    const lockedCards = document.querySelectorAll(".card.locked");
     const unlockBtn = document.getElementById("unlockBtn");
 
-    // Click on locked cards
+    // Show modal if not paid
     lockedCards.forEach(card => {
       card.addEventListener("click", () => {
-        if (localStorage.getItem("charmscripts_paid") === "true") {
+        const paid = localStorage.getItem("charmscripts_paid") === "true";
+        if (paid) {
           window.location.href = card.getAttribute("data-url");
         } else {
           modal.style.display = "flex";
@@ -210,48 +147,43 @@
       });
     });
 
-    // Modal close if background is clicked
-    window.onclick = function(e) {
-      if (e.target === modal) {
-        modal.style.display = "none";
-      }
+    // Modal background click closes
+    window.onclick = e => {
+      if (e.target === modal) modal.style.display = "none";
     };
 
+    // Start Payment
     function payNow() {
-      const handler = PaystackPop.setup({
-        key: 'pk_live_08eeefd09f6ec122ce22e17a8d0b31f6b33f2897',
+      PaystackPop.setup({
+        key: 'pk_test_b836836082db66a8849d3eb69a19da26f56bf1f1',
         email: 'user@charmscripts.com',
         amount: 100000,
         currency: 'NGN',
-        callback: function(response) {
+        callback: () => {
           localStorage.setItem("charmscripts_paid", "true");
+          updateUI();
           modal.style.display = "none";
-          updateUnlockState();
-          alert("✅ Payment successful! Premium content unlocked.");
+          alert("✅ Payment successful! Content unlocked.");
         },
-        onClose: function() {
-          alert("❌ Payment was cancelled.");
+        onClose: () => {
+          alert("❌ Payment cancelled.");
         }
-      });
-      handler.openIframe();
+      }).openIframe();
     }
 
-    function updateUnlockState() {
+    // Update UI
+    function updateUI() {
       const paid = localStorage.getItem("charmscripts_paid") === "true";
-
-      // Button label
-      if (unlockBtn) {
-        unlockBtn.innerText = paid ? "❤️ Support Us Again" : "🔓 Unlock All Premium Lines – ₦1000";
-      }
-
-      // Padlock visibility
       document.querySelectorAll(".padlock").forEach(p => {
         p.style.display = paid ? "none" : "inline";
       });
+      if (unlockBtn) {
+        unlockBtn.textContent = paid ? "❤️ Support Us Again" : "🔓 Unlock All Premium Lines – ₦1000";
+      }
     }
 
-    // On page load
-    document.addEventListener("DOMContentLoaded", updateUnlockState);
+    // On load
+    document.addEventListener("DOMContentLoaded", updateUI);
   </script>
 
 </body>
