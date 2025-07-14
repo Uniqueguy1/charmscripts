@@ -19,8 +19,14 @@
       line-height: 60px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
-    .logo { font-size: 24px; font-weight: bold; color: #000; }
-    .logo span { color: #c2185b; }
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #000;
+    }
+    .logo span {
+      color: #c2185b;
+    }
 
     .unlock-button-top {
       text-align: center;
@@ -35,6 +41,7 @@
       font-size: 16px;
       cursor: pointer;
     }
+
     .card-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -68,37 +75,52 @@
       font-size: 18px;
       color: #c2185b;
     }
- .modal {
-  display: none; /* keep this */
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.6);
- 
-  justify-content: center;
-  align-items: center;
-  z-index: 9999; /* add this to make sure it's on top */
-}
 
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
     .modal-content {
       background: white;
       padding: 25px;
       border-radius: 8px;
-      max-width: 300px;
+      max-width: 320px;
       text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
     .modal-content p {
       font-size: 14px;
       margin-bottom: 10px;
+      color: #555;
+    }
+    .modal-content input {
+      padding: 10px;
+      width: 90%;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 15px;
+      font-size: 14px;
     }
     .modal-content button {
       background: #c2185b;
       color: white;
-       cursor: pointer;
       border: none;
       padding: 10px 20px;
       border-radius: 5px;
       font-size: 15px;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+    .note {
+      font-size: 13px;
+      color: #999;
+      margin-top: 10px;
     }
   </style>
 </head>
@@ -108,115 +130,110 @@
     <div class="logo">Charim <span>SCRIPTS</span></div>
   </div>
 
-    <div class="unlock-button-top">
+  <div class="unlock-button-top">
     <button id="unlockBtn" onclick="payNow()">🔓 Unlock All Premium Lines – ₦1000</button>
   </div>
 
-<main class="card-grid">
-  <!-- ✅ Free Cards -->
-  <a href="file1.html" class="card"><img src="2675387.jpeg"><h3>100 Pickup Lines for a Handsome Guy</h3></a>
-  <a href="file2.html" class="card"><img src="worlds-most-beautiful-nigerian-girl-jare-but-mofe-fb-png__700.jpg"><h3>100 Pickup Lines for a Beautiful Lady</h3></a>
+  <main class="card-grid">
+    <!-- Free Cards -->
+    <a href="file1.html" class="card"><img src="2675387.jpeg"><h3>100 Pickup Lines for a Handsome Guy</h3></a>
+    <a href="file2.html" class="card"><img src="worlds-most-beautiful-nigerian-girl-jare-but-mofe-fb-png__700.jpg"><h3>100 Pickup Lines for a Beautiful Lady</h3></a>
 
-  <div class="card locked" data-url="file6.html">
-    <img src="I Portray The Feeling Of Ballet Dance In My Paintings To Show How Important Passion Is.jpeg">
-    <h3><span>100 Pickup Lines Painted with Passion</span> <span class="padlock">🔐</span></h3>
-  </div>
+    <!-- Locked Cards -->
+    <div class="card locked" data-url="file3.html"><img src="istockphoto-936903524-612x612.jpg"><h3><span>100 Pickup Lines That Break the Laws of Physics</span> <span class="padlock">🔐</span></h3></div>
+    <div class="card locked" data-url="file4.html"><img src="door-stretching-into-fantasy-world.png"><h3><span>100 Pickup Lines from Another Dimension</span> <span class="padlock">🔐</span></h3></div>
+    <div class="card locked" data-url="file5.html"><img src="steptodown.com557701.jpg"><h3><span>100 Pickup Lines from the Lab of Love</span> <span class="padlock">🔐</span></h3></div>
+    <div class="card locked" data-url="file6.html"><img src="I Portray The Feeling Of Ballet Dance In My Paintings To Show How Important Passion Is.jpeg"><h3><span>100 Pickup Lines Painted with Passion</span> <span class="padlock">🔐</span></h3></div>
+    <div class="card locked" data-url="file10.html"><img src="guy.jpeg"><h3><span>Dude, Try This: Pickup Lines That Actually Work</span> <span class="padlock">🔐</span></h3></div>
 
-  <div class="card locked" data-url="file10.html">
-    <img src="guy.jpeg">
-    <h3><span>Dude, Try This: Pickup Lines That Actually Work</span> <span class="padlock">🔐</span></h3>
-  </div>
-
-  <!-- 🔐 Locked Premium Cards -->
-  <div class="card locked" data-url="file3.html">
-    <img src="istockphoto-936903524-612x612.jpg">
-    <h3><span>100 Pickup Lines That Break the Laws of Physics</span> <span class="padlock">🔐</span></h3>
-  </div>
-
+    <!-- More Free Cards -->
     <a href="file7.html" class="card"><img src="istockphoto-538483378-612x612.jpg"><h3>100 Pickup Lines That Belong in a Museum</h3></a>
-  <a href="file8.html" class="card"><img src="girl.jpeg"><h3>Steal His Heart All Over Again – 100 Pickup Lines for Boyfriends</h3></a>
-  
-
-  <div class="card locked" data-url="file4.html">
-    <img src="door-stretching-into-fantasy-world.png">
-    <h3><span>100 Pickup Lines from Another Dimension</span> <span class="padlock">🔐</span></h3>
-  </div>
-  <a href="file9.html" class="card"><img src="shy.jpeg"><h3>Pickup Lines for Shy Guys Who Still Want to Win</h3></a>
-  <a href="file11.html" class="card"><img src="jaizer-capangpangan-04SoDoueyF8-unsplash.jpg"><h3>Girl, Say This: Clever Pickup Lines to Break the Ice First</h3></a>
-  <a href="file12.html" class="card"><img src="15 Pickup Lines That Are Bold, Flirty, and Actually Fun.png"><h3>115 Pickup Lines That Are Bold, Flirty, and Actually Fun</h3></a>
-  <div class="card locked" data-url="file5.html">
-    <img src="steptodown.com557701.jpg">
-    <h3><span>100 Pickup Lines from the Lab of Love</span> <span class="padlock">🔐</span></h3>
-  </div>
-
-
-</main>
+    <a href="file8.html" class="card"><img src="girl.jpeg"><h3>Steal His Heart All Over Again – 100 Pickup Lines for Boyfriends</h3></a>
+    <a href="file9.html" class="card"><img src="shy.jpeg"><h3>Pickup Lines for Shy Guys Who Still Want to Win</h3></a>
+    <a href="file11.html" class="card"><img src="jaizer-capangpangan-04SoDoueyF8-unsplash.jpg"><h3>Girl, Say This: Clever Pickup Lines to Break the Ice First</h3></a>
+    <a href="file12.html" class="card"><img src="15 Pickup Lines That Are Bold, Flirty, and Actually Fun.png"><h3>115 Pickup Lines That Are Bold, Flirty, and Actually Fun</h3></a>
+  </main>
 
   <!-- Modal -->
   <div class="modal" id="payModal">
     <div class="modal-content">
-      <p>Unlock all premium lines for ₦1000</p>
-      <p style="color: #666;">Secure Payment Powered by Paystack 🔒</p>
-      <button onclick="payNow()">Pay Now</button>
+      <p>🔐 Premium Content</p>
+      <input type="email" id="userEmail" placeholder="Enter your email to continue">
+      <button onclick="payNow()">Pay ₦1000 to Unlock All</button>
+      <p class="note">Secure Payment with Paystack. Your access never expires.</p>
     </div>
   </div>
+
   <!-- JS -->
   <script src="https://js.paystack.co/v1/inline.js"></script>
   <script>
-    const lockedCards = document.querySelectorAll(".locked");
-    const modal = document.getElementById("payModal");
-    const unlockBtn = document.getElementById("unlockBtn");
+    document.addEventListener("DOMContentLoaded", function () {
+      const lockedCards = document.querySelectorAll(".locked");
+      const modal = document.getElementById("payModal");
+      const unlockBtn = document.getElementById("unlockBtn");
 
-    // Show modal if not paid
-    lockedCards.forEach(card => {
-      card.addEventListener("click", () => {
+      // Show modal on locked card click
+      lockedCards.forEach(card => {
+        card.addEventListener("click", () => {
+          const paid = localStorage.getItem("charmscripts_paid") === "true";
+          if (paid) {
+            window.location.href = card.getAttribute("data-url");
+          } else {
+            modal.style.display = "flex";
+            const savedEmail = localStorage.getItem("charmscripts_user_email");
+            if (savedEmail) {
+              document.getElementById("userEmail").value = savedEmail;
+            }
+          }
+        });
+      });
+
+      // Close modal on outside click
+      window.onclick = e => {
+        if (e.target === modal) modal.style.display = "none";
+      };
+
+      // Update UI on load
+      updateUI();
+
+      function updateUI() {
         const paid = localStorage.getItem("charmscripts_paid") === "true";
-        if (paid) {
-          window.location.href = card.getAttribute("data-url");
-        } else {
-          modal.style.display = "flex";
+        document.querySelectorAll(".padlock").forEach(p => {
+          p.style.display = paid ? "none" : "inline";
+        });
+        if (unlockBtn) {
+          unlockBtn.textContent = paid ? "❤️ Support Us Again" : "🔓 Unlock All Premium Lines – ₦1000";
         }
-      });
-    });
-
-    // Modal background click closes
-    window.onclick = e => {
-      if (e.target === modal) modal.style.display = "none";
-    };
-
-    // Start Payment
-    function payNow() {
-      PaystackPop.setup({
-        key: 'pk_test_b836836082db66a8849d3eb69a19da26f56bf1f1',
-        email: 'user@charmscripts.com',
-        amount: 100000,
-        currency: 'NGN',
-        callback: () => {
-          localStorage.setItem("charmscripts_paid", "true");
-          updateUI();
-          modal.style.display = "none";
-          alert("✅ Payment successful! Content unlocked.");
-        },
-        onClose: () => {
-          alert("❌ Payment cancelled.");
-        }
-      }).openIframe();
-    }
-
-    // Update UI
-    function updateUI() {
-      const paid = localStorage.getItem("charmscripts_paid") === "true";
-      document.querySelectorAll(".padlock").forEach(p => {
-        p.style.display = paid ? "none" : "inline";
-      });
-      if (unlockBtn) {
-        unlockBtn.textContent = paid ? "❤️ Support Us Again" : "🔓 Unlock All Premium Lines – ₦1000";
       }
-    }
 
-    // On load
-    document.addEventListener("DOMContentLoaded", updateUI);
+      window.payNow = function () {
+        const emailInput = document.getElementById("userEmail");
+        const email = emailInput.value.trim();
+
+        if (!email || !email.includes("@")) {
+          alert("Please enter a valid email address.");
+          return;
+        }
+
+        localStorage.setItem("charmscripts_user_email", email);
+
+        PaystackPop.setup({
+          key: 'pk_test_b836836082db66a8849d3eb69a19da26f56bf1f1',
+          email: email,
+          amount: 100000,
+          currency: 'NGN',
+          callback: function () {
+            localStorage.setItem("charmscripts_paid", "true");
+            modal.style.display = "none";
+            updateUI();
+            alert("✅ Payment successful! All content unlocked.");
+          },
+          onClose: function () {
+            alert("❌ Payment was cancelled.");
+          }
+        }).openIframe();
+      };
+    });
   </script>
-
 </body>
 </html>
