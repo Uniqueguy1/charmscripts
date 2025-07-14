@@ -120,10 +120,10 @@
 
   <!-- 🔓 Unlock All Button -->
   <div class="unlock-button-top">
-    <button onclick="payNow()">🔓 Unlock All Premium Lines – ₦500</button>
+    <button onclick="payNow()">🔓 Unlock All Premium Lines – ₦1000</button>
   </div>
 <p style="text-align: center; font-size: 14px; padding: 10px 15px; color: #555;">
-  🌍 International users can pay with card — your bank will auto-convert from ₦500.
+  🌍 International users can pay with card — your bank will auto-convert ₦1000.
 </p>
 
   <main class="card-grid">
@@ -226,7 +226,7 @@
       const handler = PaystackPop.setup({
         key: 'pk_live_08eeefd09f6ec122ce22e17a8d0b31f6b33f2897',
         email: 'user@example.com',
-        amount: 50000,
+        amount: 100000,
         currency: 'NGN',
         callback: function(response) {
           localStorage.setItem("charmscripts_paid", "true");
