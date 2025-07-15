@@ -273,18 +273,31 @@
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
-.ad-container {
-  display: grid;
-  place-items: center; /* shorthand for justify + align center */
-  padding: 20px;
-  width: 100%;
-  box-sizing: border-box;
-}
+    .ad-container {
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      width: 100%;
+      box-sizing: border-box;
+    }
 
-.ad-slot {
-  width: 100%;
-  max-width: 468px;
-}
+    .ad-wrapper {
+      width: 100%;
+      max-width: 468px;
+      position: relative;
+    }
+
+    .ad-scaler {
+      transform-origin: top left;
+      width: 100%;
+      height: auto;
+    }
+
+    @media (max-width: 468px) {
+      .ad-scaler {
+        transform: scale(calc(100vw / 468));
+      }
+    }
 
     /* Mobile Tweaks */
     @media (max-width: 768px) {
@@ -335,33 +348,23 @@
     <p>💬 Discover clever, bold, and funny pickup lines made to spark conversations and maybe even hearts.</p>
     <p><strong>Unlock premium gems or dive into the free ones below!</strong></p>
   </div>
-<div class="ad-container">
-    <div class="ad-slot">
-      <script type="text/javascript">
-        atOptions = {
-          'key' : '5c67e94adf07f6d15aa22d1faefd27b1',
-          'format' : 'iframe',
-          'height' : 60,
-          'width' : 468,
-          'params' : {}
-        };
-      </script>
-      <script type="text/javascript" src="//www.highperformanceformat.com/5c67e94adf07f6d15aa22d1faefd27b1/invoke.js"></script>
-    </div>
-
-     <div class="ad-slot">
-      <script type="text/javascript">
-        atOptions = {
-          'key' : '5c67e94adf07f6d15aa22d1faefd27b1',
-          'format' : 'iframe',
-          'height' : 60,
-          'width' : 468,
-          'params' : {}
-        };
-      </script>
-      <script type="text/javascript" src="//www.highperformanceformat.com/5c67e94adf07f6d15aa22d1faefd27b1/invoke.js"></script>
+  <div class="ad-container">
+    <div class="ad-wrapper">
+      <div class="ad-scaler">
+        <script type="text/javascript">
+          atOptions = {
+            'key' : '5c67e94adf07f6d15aa22d1faefd27b1',
+            'format' : 'iframe',
+            'height' : 60,
+            'width' : 468,
+            'params' : {}
+          };
+        </script>
+        <script type="text/javascript" src="//www.highperformanceformat.com/5c67e94adf07f6d15aa22d1faefd27b1/invoke.js"></script>
+      </div>
     </div>
   </div>
+  
   <div class="loading" id="loading">
     <div class="loading-spinner"></div>
     <p>Loading...</p>
