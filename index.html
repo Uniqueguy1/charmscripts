@@ -1,82 +1,187 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Charmscripts</title>
+  <title>Charmscripts | Premium Pickup Lines</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <meta name="monetag" content="d785faad34f25f4abcce4e2662082e8b">
   <style>
+    :root {
+      --primary: #c2185b;
+      --primary-dark: #8c0032;
+      --secondary: #ff4081;
+      --text: #333;
+      --light-gray: #f8f9fa;
+      --white: #fff;
+    }
+    * {
+      box-sizing: border-box;
+    }
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      background: #f5f5f5;
+      background: var(--light-gray);
+      color: var(--text);
+      line-height: 1.6;
     }
     .site-header {
       text-align: center;
-      background: #fff;
-      height: 60px;
-      line-height: 60px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      height: 70px;
+      line-height: 70px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
     .logo {
-      font-size: 24px;
-      font-weight: bold;
-      color: #000;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 1px;
     }
     .logo span {
-      color: #c2185b;
+      color: #ffeb3b;
     }
 
+    /* Search & Filter Bar */
+    .search-bar {
+      padding: 15px 5%;
+      background: var(--white);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      display: flex;
+      gap: 10px;
+    }
+    .search-bar input {
+      flex: 1;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 30px;
+      font-size: 14px;
+      outline: none;
+      min-width: 0;
+    }
+    .search-bar button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 0 20px;
+      border-radius: 30px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      white-space: nowrap;
+    }
+    .search-bar button i {
+      margin-right: 5px;
+    }
+
+    /* Unlock Button */
     .unlock-button-top {
       text-align: center;
-      margin: 20px 0;
+      margin: 20px 5%;
     }
     .unlock-button-top button {
-      background: #c2185b;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
       color: white;
-      padding: 10px 20px;
+      padding: 12px 20px;
       border: none;
-      border-radius: 5px;
-      font-size: 16px;
+      border-radius: 30px;
+      font-size: 15px;
+      font-weight: 600;
       cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 4px 12px rgba(194, 24, 91, 0.3);
+      width: 100%;
+      max-width: 400px;
     }
 
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 0 5% 20px;
+      margin: 0 auto;
+    }
+    .hero p {
+      font-size: 15px;
+      margin: 10px 0;
+    }
+
+    /* Card Grid */
     .card-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 15px;
-      padding: 20px;
+      gap: 20px;
+      padding: 0 5% 30px;
     }
     .card {
-      background: white;
-      border-radius: 10px;
+      background: var(--white);
+      border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       cursor: pointer;
       display: flex;
       flex-direction: column;
       text-decoration: none;
-      color: #000;
-      height: 380px;
+      color: var(--text);
+      transition: all 0.3s;
+      min-height: 380px;
     }
     .card img {
       width: 100%;
       height: 200px;
       object-fit: cover;
+      border-bottom: 1px solid #eee;
     }
     .card h3 {
       padding: 15px;
+      margin: 0;
+      font-size: 16px;
+      font-weight: 600;
       display: flex;
       justify-content: space-between;
-      font-size: 16px;
+      align-items: center;
+      flex-grow: 1;
     }
     .padlock {
       font-size: 18px;
-      color: #c2185b;
+      color: var(--primary);
+    }
+    .locked {
+      position: relative;
+    }
+    .locked::after {
+      content: "PREMIUM";
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: var(--primary);
+      color: white;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: bold;
     }
 
+    /* Favorites System */
+    .favorite-btn {
+      background: none;
+      border: none;
+      color: #ccc;
+      font-size: 18px;
+      cursor: pointer;
+      transition: all 0.3s;
+      padding: 0 5px;
+    }
+    .favorite-btn.active {
+      color: #ff4081;
+    }
+
+    /* Modal */
     .modal {
       display: none;
       position: fixed;
@@ -86,116 +191,268 @@
       justify-content: center;
       align-items: center;
       z-index: 9999;
+      backdrop-filter: blur(5px);
     }
     .modal-content {
       background: white;
       padding: 25px;
-      border-radius: 8px;
-      max-width: 320px;
+      border-radius: 12px;
+      max-width: 400px;
+      width: 90%;
       text-align: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+      animation: modalFadeIn 0.3s;
+    }
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .modal-content h3 {
+      margin-top: 0;
+      color: var(--primary);
     }
     .modal-content p {
-      font-size: 14px;
-      margin-bottom: 10px;
+      font-size: 15px;
+      margin-bottom: 15px;
       color: #555;
     }
     .modal-content input {
-      padding: 10px;
-      width: 90%;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      margin-bottom: 15px;
+      padding: 12px;
+      width: 100%;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin-bottom: 20px;
       font-size: 14px;
     }
     .modal-content button {
-      background: #c2185b;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
       color: white;
       border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
+      padding: 12px;
+      border-radius: 30px;
       font-size: 15px;
+      font-weight: 600;
       cursor: pointer;
-      margin-bottom: 10px;
+      width: 100%;
+      margin-bottom: 15px;
     }
     .note {
       font-size: 13px;
       color: #999;
-      margin-top: 10px;
+      line-height: 1.5;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: var(--white);
+      font-size: 13px;
+      color: #777;
+    }
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    /* Loading Animation */
+    .loading {
+      display: none;
+      text-align: center;
+      padding: 30px 0;
+    }
+    .loading-spinner {
+      border: 4px solid rgba(0,0,0,0.1);
+      border-radius: 50%;
+      border-top: 4px solid var(--primary);
+      width: 30px;
+      height: 30px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Mobile Tweaks */
+    @media (max-width: 768px) {
+      .logo {
+        font-size: 20px;
+      }
+      .search-bar {
+        flex-direction: column;
+      }
+      .search-bar button {
+        padding: 12px;
+        width: 100%;
+      }
+      .card {
+        min-height: 350px;
+      }
+      .card h3 {
+        font-size: 15px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .site-header {
+        height: 60px;
+        line-height: 60px;
+      }
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
-
   <div class="site-header">
     <div class="logo">Charim <span>SCRIPTS</span></div>
+  </div>
+
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search pickup lines...">
+    <button id="searchBtn"><i class="fas fa-search"></i> Search</button>
   </div>
 
   <div class="unlock-button-top">
     <button id="unlockBtn">🔓 Unlock All Premium Lines – ₦1000</button>
   </div>
 
-  <main class="card-grid">
-    <!-- Cards: just shortened for space, add the rest as needed -->
-<main class="card-grid">
-  <!-- ✅ Free Cards -->
-  <a href="file1.html" class="card"><img src="2675387.jpeg"><h3>100 Pickup Lines for a Handsome Guy</h3></a>
-  <a href="file2.html" class="card"><img src="worlds-most-beautiful-nigerian-girl-jare-but-mofe-fb-png__700.jpg"><h3>100 Pickup Lines for a Beautiful Lady</h3></a>
-
-  <div class="card locked" data-url="file6.html">
-    <img src="I Portray The Feeling Of Ballet Dance In My Paintings To Show How Important Passion Is.jpeg">
-    <h3><span>100 Pickup Lines Painted with Passion</span> <span class="padlock">🔐</span></h3>
+  <div class="hero">
+    <p>💬 Discover clever, bold, and funny pickup lines made to spark conversations and maybe even hearts.</p>
+    <p><strong>Unlock premium gems or dive into the free ones below!</strong></p>
   </div>
 
-  <div class="card locked" data-url="file10.html">
-    <img src="guy.jpeg">
-    <h3><span>Dude, Try This: Pickup Lines That Actually Work</span> <span class="padlock">🔐</span></h3>
+  <div class="loading" id="loading">
+    <div class="loading-spinner"></div>
+    <p>Loading...</p>
   </div>
 
-  <!-- 🔐 Locked Premium Cards -->
-  <div class="card locked" data-url="file3.html">
-    <img src="istockphoto-936903524-612x612.jpg">
-    <h3><span>100 Pickup Lines That Break the Laws of Physics</span> <span class="padlock">🔐</span></h3>
-  </div>
-
-    <a href="file7.html" class="card"><img src="istockphoto-538483378-612x612.jpg"><h3>100 Pickup Lines That Belong in a Museum</h3></a>
-  <a href="file8.html" class="card"><img src="girl.jpeg"><h3>Steal His Heart All Over Again – 100 Pickup Lines for Boyfriends</h3></a>
-  
-
-  <div class="card locked" data-url="file4.html">
-    <img src="door-stretching-into-fantasy-world.png">
-    <h3><span>100 Pickup Lines from Another Dimension</span> <span class="padlock">🔐</span></h3>
-  </div>
-  <a href="file9.html" class="card"><img src="shy.jpeg"><h3>Pickup Lines for Shy Guys Who Still Want to Win</h3></a>
-  <a href="file11.html" class="card"><img src="jaizer-capangpangan-04SoDoueyF8-unsplash.jpg"><h3>Girl, Say This: Clever Pickup Lines to Break the Ice First</h3></a>
-  <a href="file12.html" class="card"><img src="15 Pickup Lines That Are Bold, Flirty, and Actually Fun.png"><h3>115 Pickup Lines That Are Bold, Flirty, and Actually Fun</h3></a>
-  <div class="card locked" data-url="file5.html">
-    <img src="steptodown.com557701.jpg">
-    <h3><span>100 Pickup Lines from the Lab of Love</span> <span class="padlock">🔐</span></h3>
-  </div>
-
-
-</main>
-    <!-- Add more cards here... -->
+  <main class="card-grid" id="cardGrid">
+    <!-- Cards will be loaded dynamically -->
   </main>
 
-  <!-- Modal -->
   <div class="modal" id="payModal">
     <div class="modal-content">
-      <p><strong>Unlock all premium pickup lines for ₦1000</strong></p>
+      <h3>🔓 Unlock Premium Content</h3>
+      <p><strong>Get instant access to all premium pickup lines for just ₦1000</strong></p>
       <input type="email" id="userEmail" placeholder="Enter your email to continue">
-      <button onclick="payNow()">Pay Now</button>
-      <p class="note">💳 Secured by Paystack — No recurring charges.<br>Instant unlock forever.</p>
+      <button onclick="payNow()">Pay Now via Paystack</button>
+      <p class="note">💳 Secured payment • No recurring charges<br>Instant unlock forever • 24/7 support</p>
     </div>
   </div>
 
-<script src="https://js.paystack.co/v1/inline.js"></script>
+  <footer>
+    <p>© 2023 Charmscripts | <a href="#">Terms</a> | <a href="#">Privacy</a></p>
+  </footer>
+
+  <script src="https://js.paystack.co/v1/inline.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const modal = document.getElementById("payModal");
       const unlockBtn = document.getElementById("unlockBtn");
-      const lockedCards = document.querySelectorAll(".card.locked");
+      const cardGrid = document.getElementById("cardGrid");
+      const loadingEl = document.getElementById("loading");
+      const searchInput = document.getElementById("searchInput");
+      const searchBtn = document.getElementById("searchBtn");
 
+      // All Cards Data
+      const cardsData = [
+        { id: 1, title: "100 Pickup Lines for a Handsome Guy", img: "2675387.jpeg", url: "file1.html", locked: false },
+        { id: 2, title: "100 Pickup Lines for a Beautiful Lady", img: "worlds-most-beautiful-nigerian-girl-jare-but-mofe-fb-png__700.jpg", url: "file2.html", locked: false },
+        { id: 3, title: "100 Pickup Lines Painted with Passion", img: "I Portray The Feeling Of Ballet Dance In My Paintings To Show How Important Passion Is.jpeg", url: "file6.html", locked: true },
+        { id: 4, title: "Dude, Try This: Pickup Lines That Actually Work", img: "guy.jpeg", url: "file10.html", locked: true },
+        { id: 5, title: "100 Pickup Lines That Break the Laws of Physics", img: "istockphoto-936903524-612x612.jpg", url: "file3.html", locked: true },
+        { id: 6, title: "100 Pickup Lines That Belong in a Museum", img: "istockphoto-538483378-612x612.jpg", url: "file7.html", locked: false },
+        { id: 7, title: "Steal His Heart All Over Again – 100 Pickup Lines for Boyfriends", img: "girl.jpeg", url: "file8.html", locked: false },
+        { id: 8, title: "100 Pickup Lines from Another Dimension", img: "door-stretching-into-fantasy-world.png", url: "file4.html", locked: true },
+        { id: 9, title: "Pickup Lines for Shy Guys Who Still Want to Win", img: "shy.jpeg", url: "file9.html", locked: false },
+        { id: 10, title: "Girl, Say This: Clever Pickup Lines to Break the Ice First", img: "jaizer-capangpangan-04SoDoueyF8-unsplash.jpg", url: "file11.html", locked: false },
+        { id: 11, title: "115 Pickup Lines That Are Bold, Flirty, and Actually Fun", img: "15 Pickup Lines That Are Bold, Flirty, and Actually Fun.png", url: "file12.html", locked: false },
+        { id: 12, title: "100 Pickup Lines from the Lab of Love", img: "steptodown.com557701.jpg", url: "file5.html", locked: true }
+      ];
+
+      // Render Cards
+      function renderCards(filter = '') {
+        loadingEl.style.display = 'block';
+        cardGrid.innerHTML = '';
+        
+        setTimeout(() => {
+          const filteredCards = filter 
+            ? cardsData.filter(card => 
+                card.title.toLowerCase().includes(filter.toLowerCase()))
+            : cardsData;
+          
+          if (filteredCards.length === 0) {
+            cardGrid.innerHTML = '<p style="grid-column:1/-1;text-align:center;">No results found. Try another search!</p>';
+          } else {
+            filteredCards.forEach(card => {
+              const cardEl = document.createElement(card.locked ? 'div' : 'a');
+              cardEl.className = `card ${card.locked ? 'locked' : ''}`;
+              if (card.locked) cardEl.setAttribute('data-url', card.url);
+              else cardEl.href = card.url;
+              
+              cardEl.innerHTML = `
+                <img src="${card.img}" loading="lazy" alt="${card.title}">
+                <h3>
+                  <span>${card.title}</span>
+                  ${card.locked ? '<span class="padlock">🔐</span>' : ''}
+                </h3>
+                <button class="favorite-btn" data-id="${card.id}">♥</button>
+              `;
+              cardGrid.appendChild(cardEl);
+            });
+          }
+          
+          loadingEl.style.display = 'none';
+          attachCardEvents();
+        }, 500);
+      }
+
+      // Search Functionality
+      searchBtn.addEventListener('click', () => renderCards(searchInput.value));
+      searchInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') renderCards(searchInput.value);
+      });
+
+      // Favorites System
+      function attachCardEvents() {
+        document.querySelectorAll('.favorite-btn').forEach(btn => {
+          const cardId = btn.getAttribute('data-id');
+          const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+          if (favorites.includes(cardId)) btn.classList.add('active');
+          
+          btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+            
+            if (favorites.includes(cardId)) {
+              favorites.splice(favorites.indexOf(cardId), 1);
+              btn.classList.remove('active');
+            } else {
+              favorites.push(cardId);
+              btn.classList.add('active');
+            }
+            
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+          });
+        });
+
+        // Locked card click handling
+        document.querySelectorAll('.locked').forEach(card => {
+          card.addEventListener('click', () => {
+            if (localStorage.getItem("charmscripts_paid") === "true") {
+              window.location.href = card.getAttribute('data-url');
+            } else {
+              showModal();
+            }
+          });
+        });
+      }
+
+      // Modal Logic
       function showModal() {
         const emailField = document.getElementById("userEmail");
         const savedEmail = localStorage.getItem("charmscripts_user_email");
@@ -203,62 +460,38 @@
         modal.style.display = "flex";
       }
 
-      unlockBtn.addEventListener("click", () => {
-        showModal();
-      });
+      unlockBtn.addEventListener("click", showModal);
+      window.onclick = (e) => e.target === modal && (modal.style.display = "none");
 
-      lockedCards.forEach(card => {
-        card.addEventListener("click", () => {
-          const paid = localStorage.getItem("charmscripts_paid") === "true";
-          if (paid) {
-            window.location.href = card.getAttribute("data-url");
-          } else {
-            showModal();
-          }
-        });
-      });
-
-      window.onclick = (e) => {
-        if (e.target === modal) modal.style.display = "none";
-      };
-
-      window.payNow = function () {
-        const emailInput = document.getElementById("userEmail");
-        const email = emailInput.value.trim();
-        if (!email || !email.includes("@")) {
-          alert("Please enter a valid email address.");
-          return;
-        }
+      // Paystack Integration
+      window.payNow = function() {
+        const email = document.getElementById("userEmail").value.trim();
+        if (!email.includes('@')) return alert("Please enter a valid email!");
+        
         localStorage.setItem("charmscripts_user_email", email);
+        unlockBtn.innerHTML = '<div class="loading-spinner" style="border-top-color:white;display:inline-block;"></div> Processing...';
 
         PaystackPop.setup({
           key: 'pk_live_08eeefd09f6ec122ce22e17a8d0b31f6b33f2897',
           email: email,
           amount: 100000,
           currency: 'NGN',
-          callback: function () {
+          callback: function() {
             localStorage.setItem("charmscripts_paid", "true");
             modal.style.display = "none";
-            updateUI();
-            alert("✅ Payment successful! All content unlocked.");
+            unlockBtn.innerHTML = '🎉 Unlocked! Browse Premium';
+            setTimeout(() => { unlockBtn.textContent = '❤️ Support Us Again'; }, 3000);
+            renderCards(searchInput.value); // Refresh cards
           },
-          onClose: function () {
-            alert("❌ Payment was cancelled.");
+          onClose: function() {
+            unlockBtn.textContent = '🔓 Unlock All Premium Lines – ₦1000';
           }
         }).openIframe();
       }
 
-      function updateUI() {
-        const paid = localStorage.getItem("charmscripts_paid") === "true";
-        document.querySelectorAll(".padlock").forEach(p => {
-          p.style.display = paid ? "none" : "inline";
-        });
-        unlockBtn.textContent = paid ? "❤️ Support Us Again" : "🔓 Unlock All Premium Lines – ₦1000";
-      }
-
-      updateUI();
+      // Initialize
+      renderCards();
     });
   </script>
-
 </body>
 </html>
