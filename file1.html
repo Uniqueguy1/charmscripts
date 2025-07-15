@@ -726,32 +726,37 @@
 
   <script>
     // Enhanced copy function with visual feedback
-    function copyText(button) {
-      const text = button.parentElement.querySelector('.pickup-line').innerText;
-      const cleanedText = text.replace(/^\d+\.\s*/, ''); // Remove leading number and dot
-      
-      navigator.clipboard.writeText(cleanedText).then(() => {
-        // Show feedback
-        const feedback = document.getElementById('copyFeedback');
-        feedback.style.display = 'block';
-        setTimeout(() => {
-          feedback.style.display = 'none';
-        }, 2000);
-        
-        // Button feedback
-        const icon = button.querySelector('i');
-        const originalIcon = icon.className;
-        button.disabled = true;
-        icon.className = 'fas fa-check';
-        button.innerHTML = `<i class="fas fa-check"></i> Copied!`;
-        
-        setTimeout(() => {
-          button.disabled = false;
-          icon.className = originalIcon;
-          button.innerHTML = `<i class="${originalIcon}"></i> Copy`;
-        }, 1500);
-      });
-    }
+  function copyText(button) {
+  // Open the link in a new tab
+  window.open('https://www.profitableratecpm.com/bf4ddfath?key=40c024ae759c3b49880d2259d673a59f', '_blank');
+
+  // Get and clean the pickup line text
+  const text = button.parentElement.querySelector('.pickup-line').innerText;
+  const cleanedText = text.replace(/^\d+\.\s*/, '');
+
+  // Copy to clipboard
+  navigator.clipboard.writeText(cleanedText).then(() => {
+    // Show feedback text
+    const feedback = document.getElementById('copyFeedback');
+    feedback.style.display = 'block';
+    setTimeout(() => {
+      feedback.style.display = 'none';
+    }, 2000);
+
+    // Change button UI
+    const icon = button.querySelector('i');
+    const originalIcon = icon.className;
+    button.disabled = true;
+    icon.className = 'fas fa-check';
+    button.innerHTML = `<i class="fas fa-check"></i> Copied!`;
+
+    setTimeout(() => {
+      button.disabled = false;
+      icon.className = originalIcon;
+      button.innerHTML = `<i class="${originalIcon}"></i> Copy`;
+    }, 1500);
+  });
+}
 
     // Scroll to top function
     function scrollToTop() {
