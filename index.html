@@ -203,12 +203,7 @@
       }
 
       unlockBtn.addEventListener("click", () => {
-        const paid = localStorage.getItem("charmscripts_paid") === "true";
-        if (paid) {
-          alert("You’ve already unlocked all content! 💖");
-        } else {
-          showModal();
-        }
+        showModal();
       });
 
       lockedCards.forEach(card => {
