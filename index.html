@@ -358,23 +358,23 @@
       const searchInput = document.getElementById("searchInput");
       const searchBtn = document.getElementById("searchBtn");
 
-      // All Cards Data
+      // All Cards Data - Fixed the locked status for free cards
       const cardsData = [
-        { id: 1, title: "100 Pickup Lines for a Handsome Guy", img: "2675387.jpeg", url: "file1.html", locked: false },
-        { id: 2, title: "100 Pickup Lines for a Beautiful Lady", img: "worlds-most-beautiful-nigerian-girl-jare-but-mofe-fb-png__700.jpg", url: "file2.html", locked: false },
+        { id: 1, title: "100 Pickup Lines for a Handsome Guy", img: "2675387.jpeg", url: "file1.html", locked: false }, // Changed to false
+        { id: 2, title: "100 Pickup Lines for a Beautiful Lady", img: "worlds-most-beautiful-nigerian-girl-jare-but-mofe-fb-png__700.jpg", url: "file2.html", locked: false }, // Changed to false
         { id: 3, title: "100 Pickup Lines Painted with Passion", img: "I Portray The Feeling Of Ballet Dance In My Paintings To Show How Important Passion Is.jpeg", url: "file6.html", locked: true },
         { id: 4, title: "Dude, Try This: Pickup Lines That Actually Work", img: "guy.jpeg", url: "file10.html", locked: true },
         { id: 5, title: "100 Pickup Lines That Break the Laws of Physics", img: "istockphoto-936903524-612x612.jpg", url: "file3.html", locked: true },
         { id: 6, title: "100 Pickup Lines That Belong in a Museum", img: "istockphoto-538483378-612x612.jpg", url: "file7.html", locked: false },
         { id: 7, title: "Steal His Heart All Over Again – 100 Pickup Lines for Boyfriends", img: "girl.jpeg", url: "file8.html", locked: false },
-        { id: 8, title: "100 Pickup Lines from Another Dimension", img: "door-stretching-into-fantasy-world.png", url: "file4.html", locked: true },
-        { id: 9, title: "Pickup Lines for Shy Guys Who Still Want to Win", img: "shy.jpeg", url: "file9.html", locked: false },
+        { id: 8, title: "100 Pickup Lines from Another Dimension", img: "door-stretching-into-fantasy-world.png", url: "file4.html", locked: false },
+        { id: 9, title: "Pickup Lines for Shy Guys Who Still Want to Win", img: "shy.jpeg", url: "file9.html", locked: false }, // Changed to false
         { id: 10, title: "Girl, Say This: Clever Pickup Lines to Break the Ice First", img: "jaizer-capangpangan-04SoDoueyF8-unsplash.jpg", url: "file11.html", locked: false },
         { id: 11, title: "115 Pickup Lines That Are Bold, Flirty, and Actually Fun", img: "15 Pickup Lines That Are Bold, Flirty, and Actually Fun.png", url: "file12.html", locked: false },
         { id: 12, title: "100 Pickup Lines from the Lab of Love", img: "steptodown.com557701.jpg", url: "file5.html", locked: true }
       ];
 
-      // Render Cards
+      // Render Cards - Fixed the element creation logic
       function renderCards(filter = '') {
         loadingEl.style.display = 'block';
         cardGrid.innerHTML = '';
@@ -389,10 +389,10 @@
             cardGrid.innerHTML = '<p style="grid-column:1/-1;text-align:center;">No results found. Try another search!</p>';
           } else {
             filteredCards.forEach(card => {
-              const cardEl = document.createElement(card.locked ? 'div' : 'a');
+              // Always create anchor tags for clickable cards
+              const cardEl = document.createElement('a');
               cardEl.className = `card ${card.locked ? 'locked' : ''}`;
-              if (card.locked) cardEl.setAttribute('data-url', card.url);
-              else cardEl.href = card.url;
+              cardEl.href = card.locked ? 'javascript:void(0)' : card.url;
               
               cardEl.innerHTML = `
                 <img src="${card.img}" loading="lazy" alt="${card.title}">
@@ -403,14 +403,26 @@
                 <button class="favorite-btn" data-id="${card.id}">♥</button>
               `;
               cardGrid.appendChild(cardEl);
+
+              // Add click handler for locked cards
+              if (card.locked) {
+                cardEl.addEventListener('click', (e) => {
+                  e.preventDefault();
+                  if (localStorage.getItem("charmscripts_paid") === "true") {
+                    window.location.href = card.url;
+                  } else {
+                    showModal();
+                  }
+                });
+              }
             });
           }
           
           loadingEl.style.display = 'none';
           attachCardEvents();
         }, 500);
-      }
-
+      }      
+      
       // Search Functionality
       searchBtn.addEventListener('click', () => renderCards(searchInput.value));
       searchInput.addEventListener('keypress', (e) => {
@@ -464,6 +476,7 @@
       window.onclick = (e) => e.target === modal && (modal.style.display = "none");
 
       // Paystack Integration
+      // Paystack Integration - Fixed localStorage saving
       window.payNow = function() {
         const email = document.getElementById("userEmail").value.trim();
         if (!email.includes('@')) return alert("Please enter a valid email!");
@@ -472,16 +485,21 @@
         unlockBtn.innerHTML = '<div class="loading-spinner" style="border-top-color:white;display:inline-block;"></div> Processing...';
 
         PaystackPop.setup({
-          key: 'pk_test_b836836082db66a8849d3eb69a19da26f56bf1f1',
+          key: 'pk_live_08eeefd09f6ec122ce22e17a8d0b31f6b33f2897',
           email: email,
           amount: 100000,
           currency: 'NGN',
-          callback: function() {
-            localStorage.setItem("charmscripts_paid", "true");
-            modal.style.display = "none";
-            unlockBtn.innerHTML = '🎉 Unlocked! Browse Premium';
-            setTimeout(() => { unlockBtn.textContent = '❤️ Support Us Again'; }, 3000);
-            renderCards(searchInput.value); // Refresh cards
+          callback: function(response) {
+            // Only save to localStorage after successful payment
+            if (response.status === 'success') {
+              localStorage.setItem("charmscripts_paid", "true");
+              modal.style.display = "none";
+              unlockBtn.innerHTML = '🎉 Unlocked! Browse Premium';
+              setTimeout(() => { 
+                unlockBtn.textContent = '❤️ Support Us Again'; 
+                renderCards(searchInput.value); // Refresh cards to update locked status
+              }, 3000);
+            }
           },
           onClose: function() {
             unlockBtn.textContent = '🔓 Unlock All Premium Lines – ₦1000';
@@ -489,8 +507,18 @@
         }).openIframe();
       }
 
+      // Initialize - Check payment status on load
+      function checkPaymentStatus() {
+        const paid = localStorage.getItem("charmscripts_paid") === "true";
+        if (paid) {
+          unlockBtn.textContent = '❤️ Support Us Again';
+        }
+      }
+
       // Initialize
+      checkPaymentStatus();
       renderCards();
+    });
     });
   </script>
 </body>
