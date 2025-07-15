@@ -1,74 +1,284 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>100 Pickup Lines That Break the Laws of Physics</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f9f9f9;
-            margin: 0;
-            padding: 20px;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 5px;
-        }
-        @media (min-width: 768px) {
-            .grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-        .card {
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .pickup-line {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        .why {
-            font-size: 14px;
-            margin-bottom: 20px;
-        }
-        .copy-button {
-            align-self: flex-start;
-            padding: 10px 15px;
-            border: none;
-            background: #4CAF50;
-            color: white;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-        .copy-button:hover {
-            background: #45a049;
-        }
-    </style>
-    <link rel="stylesheet" href="header.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>100 Pickup Lines That Break the Laws of Physics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #c2185b;
+      --primary-dark: #8c0032;
+      --secondary: #ff4081;
+      --text: #333;
+      --light-gray: #f8f9fa;
+      --white: #fff;
+      --card-bg: #fff5f9;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: var(--light-gray);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .site-header {
+      text-align: center;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      height: 70px;
+      line-height: 70px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 1px;
+      text-decoration: none;
+    }
+    .logo span {
+      color: #ffeb3b;
+    }
+
+    /* Page Header */
+    .page-header {
+      text-align: center;
+      padding: 30px 5% 20px;
+      background: linear-gradient(135deg, rgba(194,24,91,0.1), rgba(255,64,129,0.1));
+      margin-bottom: 20px;
+    }
+    .page-header h1 {
+      color: var(--primary);
+      margin: 0;
+      font-size: 28px;
+    }
+    .page-header p {
+      color: #666;
+      max-width: 600px;
+      margin: 10px auto 0;
+    }
+
+    /* Grid Layout */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 0 5% 40px;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(194,24,91,0.1);
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    }
+    .pickup-line {
+      font-weight: 600;
+      font-size: 1.1em;
+      margin-bottom: 12px;
+      color: var(--primary-dark);
+      line-height: 1.4;
+    }
+    .why {
+      font-size: 0.95em;
+      color: #666;
+      margin-bottom: 16px;
+      flex-grow: 1;
+    }
+    .copy-button {
+      align-self: flex-start;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 30px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .copy-button:hover {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      box-shadow: 0 4px 12px rgba(194,24,91,0.3);
+    }
+    .copy-button i {
+      font-size: 14px;
+    }
+
+    /* Floating Action Button */
+    .fab {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(194,24,91,0.3);
+      cursor: pointer;
+      z-index: 50;
+      transition: all 0.3s;
+    }
+    .fab:hover {
+      transform: scale(1.1);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: var(--white);
+      font-size: 13px;
+      color: #777;
+      border-top: 1px solid #eee;
+    }
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .grid {
+        grid-template-columns: 1fr;
+        padding: 0 15px 30px;
+      }
+      .page-header h1 {
+        font-size: 24px;
+      }
+      .fab {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+      }
+    }
+
+    /* Animation for copy feedback */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .copy-feedback {
+      position: fixed;
+      bottom: 100px;
+      right: 30px;
+      background: var(--primary);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      z-index: 100;
+      animation: fadeIn 0.3s;
+      display: none;
+    }
+  </style>
 </head>
 <body>
 
-<div class="grid"><div class="card"><div class="pickup-line">1. You're moving me without force—how's that for impossible?</div><div class="why">Uses smart humor to keep things interesting.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">2. You broke Newton's third law—because I felt something, and you didn't push back.</div><div class="why">Combines physics concepts with romantic admiration for clever flattery.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">3. Are we entangled particles? Because no matter the distance, I feel you.</div><div class="why">Flirty and intellectual—it appeals to science lovers.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">4. If beauty were mass, you'd bend spacetime.</div><div class="why">Physics-based lines flatter with logic-defying charm.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">5. You're hotter than the core of a neutron star.</div><div class="why">Breaks the mold of traditional pickup lines by referencing real theories.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">6. You're the paradox my theories can’t solve.</div><div class="why">Makes the listener feel like an extraordinary phenomenon.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">7. You distort space and time every time you smile.</div><div class="why">Creates intrigue with playful science metaphors.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">8. Even Einstein couldn’t explain the pull you have on me.</div><div class="why">Combines physics concepts with romantic admiration for clever flattery.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">9. Are you gravity? Because I'm falling way too fast for you.</div><div class="why">Flirty and intellectual—it appeals to science lovers.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">10. You must be faster than light, because my heart skipped ahead.</div><div class="why">Physics-based lines flatter with logic-defying charm.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">11. You're moving me without force—how's that for impossible?</div><div class="why">Creates intrigue with playful science metaphors.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">12. You're the paradox my theories can’t solve.</div><div class="why">Physics-based lines flatter with logic-defying charm.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">13. You're moving me without force—how's that for impossible?</div><div class="why">Creates intrigue with playful science metaphors.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">14. You distort space and time every time you smile.</div><div class="why">Uses smart humor to keep things interesting.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">15. You're hotter than the core of a neutron star.</div><div class="why">Flirty and intellectual—it appeals to science lovers.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">16. Even Einstein couldn’t explain the pull you have on me.</div><div class="why">Physics-based lines flatter with logic-defying charm.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">17. You're moving me without force—how's that for impossible?</div><div class="why">Flirty and intellectual—it appeals to science lovers.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">18. Are you gravity? Because I'm falling way too fast for you.</div><div class="why">Uses smart humor to keep things interesting.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">19. You're moving me without force—how's that for impossible?</div><div class="why">Flirty and intellectual—it appeals to science lovers.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">20. You must be faster than light, because my heart skipped ahead.</div><div class="why">Makes the listener feel like an extraordinary phenomenon.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">21. You distort space and time every time you smile.</div><div class="why">Uses smart humor to keep things interesting.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">22. You broke Newton's third law—because I felt something, and you didn't push back.</div><div class="why">Uses smart humor to keep things interesting.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">23. You're moving me without force—how's that for impossible?</div><div class="why">Physics-based lines flatter with logic-defying charm.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">24. Even Einstein couldn’t explain the pull you have on me.</div><div class="why">Physics-based lines flatter with logic-defying charm.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">25. You're hotter than the core of a neutron star.</div><div class="why">Uses smart humor to keep things interesting.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">26. You broke Newton's third law—because I felt something, and you didn't push back.</div><div class="why">Breaks the mold of traditional pickup lines by referencing real theories.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">27. Are you gravity? Because I'm falling way too fast for you.</div><div class="why">Breaks the mold of traditional pickup lines by referencing real theories.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">28. You distort space and time every time you smile.</div><div class="why">Combines physics concepts with romantic admiration for clever flattery.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">29. You're moving me without force—how's that for impossible?</div><div class="why">Breaks the mold of traditional pickup lines by referencing real theories.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">30. You must be faster than light, because my heart skipped ahead.</div><div class="why">Combines physics concepts with romantic admiration for clever flattery.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">31. You're moving me without force—how's that for impossible?</div><div class="why">Uses smart humor to keep things interesting.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">32. Even Einstein couldn’t explain the pull you have on me.</div><div class="why">Creates intrigue with playful science metaphors.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">33. Are we entangled particles? Because no matter the distance, I feel you.</div><div class="why">Flirty and intellectual—it appeals to science lovers.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">34. You broke Newton's third law—because I felt something, and you didn't push back.</div><div class="why">Breaks the mold of traditional pickup lines by referencing real theories.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">35. You distort space and time every time you smile.</div><div class="why">Combines physics concepts with romantic admiration for clever flattery.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">36. Are you gravity? Because I'm falling way too fast for you.</div><div class="why">Creates intrigue with playful science metaphors.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">37. You're moving me without force—how's that for impossible?</div><div class="why">Combines physics concepts with romantic admiration for clever flattery.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">38. You broke Newton's third law—because I felt something, and you didn't push back.</div><div class="why">Flirty and intellectual—it appeals to science lovers.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">39. Are we entangled particles? Because no matter the distance, I feel you.</div><div class="why">Creates intrigue with playful science metaphors.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">40. You must be faster than light, because my heart skipped ahead.</div><div class="why">Uses smart humor to keep things interesting.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">41. You're moving me without force—how's that for impossible?</div><div class="why">Creates intrigue with playful science metaphors.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">42. You distort space and time every time you smile.</div><div class="why">Flirty and intellectual—it appeals to science lovers.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">43. You're moving me without force—how's that for impossible?</div><div class="why">Physics-based lines flatter with logic-defying charm.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">44. If beauty were mass, you'd bend spacetime.</div><div class="why">Breaks the mold of traditional pickup lines by referencing real theories.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">45. Are you gravity? Because I'm falling way too fast for you.</div><div class="why">Creates intrigue with playful science metaphors.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">46. You broke Newton's third law—because I felt something, and you didn't push back.</div><div class="why">Uses smart humor to keep things interesting.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">47. You're moving me without force—how's that for impossible?</div><div class="why">Uses smart humor to keep things interesting.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">48. Even Einstein couldn’t explain the pull you have on me.</div><div class="why">Creates intrigue with playful science metaphors.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">49. You distort space and time every time you smile.</div><div class="why">Makes the listener feel like an extraordinary phenomenon.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">50. You must be faster than light, because my heart skipped ahead.</div><div class="why">Combines physics concepts with romantic admiration for clever flattery.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">51. Are we entangled particles? Because no matter the distance, I feel you.</div><div class="why">Combines physics concepts with romantic admiration for clever flattery.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">52. If beauty were mass, you'd bend spacetime.</div><div class="why">Uses smart humor to keep things interesting.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">53. You're moving me without force—how's that for impossible?</div><div class="why">Combines physics concepts with romantic admiration for clever flattery.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">54. Are you gravity? Because I'm falling way too fast for you.</div><div class="why">Physics-based lines flatter with logic-defying charm.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">55. You're hotter than the core of a neutron star.</div><div class="why">Makes the listener feel like an extraordinary phenomenon.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">56. Even Einstein couldn’t explain the pull you have on me.</div><div class="why">Combines physics concepts with romantic admiration for clever flattery.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">57. Are we entangled particles? Because no matter the distance, I feel you.</div><div class="why">Creates intrigue with playful science metaphors.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">58. You broke Newton's third law—because I felt something, and you didn't push back.</div><div class="why">Breaks the mold of traditional pickup lines by referencing real theories.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">59. You're moving me without force—how's that for impossible?</div><div class="why">Combines physics concepts with romantic admiration for clever flattery.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">60. You must be faster than light, because my heart skipped ahead.</div><div class="why">Physics-based lines flatter with logic-defying charm.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">61. You're moving me without force—how's that for impossible?</div><div class="why">Creates intrigue with playful science metaphors.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">62. You broke Newton's third law—because I felt something, and you didn't push back.</div><div class="why">Flirty and intellectual—it appeals to science lovers.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">63. Are you gravity? Because I'm falling way too fast for you.</div><div class="why">Flirty and intellectual—it appeals to science lovers.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">64. Even Einstein couldn’t explain the pull you have on me.</div><div class="why">Breaks the mold of traditional pickup lines by referencing real theories.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">65. You're hotter than the core of a neutron star.</div><div class="why">Makes the listener feel like an extraordinary phenomenon.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">66. You're the paradox my theories can’t solve.</div><div class="why">Makes the listener feel like an extraordinary phenomenon.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">67. You're moving me without force—how's that for impossible?</div><div class="why">Combines physics concepts with romantic admiration for clever flattery.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">68. If beauty were mass, you'd bend spacetime.</div><div class="why">Makes the listener feel like an extraordinary phenomenon.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">69. Are we entangled particles? Because no matter the distance, I feel you.</div><div class="why">Uses smart humor to keep things interesting.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">70. You must be faster than light, because my heart skipped ahead.</div><div class="why">Creates intrigue with playful science metaphors.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">71. You're moving me without force—how's that for impossible?</div><div class="why">Flirty and intellectual—it appeals to science lovers.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">72. Are you gravity? Because I'm falling way too fast for you.</div><div class="why">Creates intrigue with playful science metaphors.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">73. You're moving me without force—how's that for impossible?</div><div class="why">Combines physics concepts with romantic admiration for clever flattery.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">74. You broke Newton's third law—because I felt something, and you didn't push back.</div><div class="why">Makes the listener feel like an extraordinary phenomenon.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">75. You're hotter than the core of a neutron star.</div><div class="why">Flirty and intellectual—it appeals to science lovers.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">76. If beauty were mass, you'd bend spacetime.</div><div class="why">Physics-based lines flatter with logic-defying charm.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">77. You distort space and time every time you smile.</div><div class="why">Creates intrigue with playful science metaphors.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">78. You're the paradox my theories can’t solve.</div><div class="why">Flirty and intellectual—it appeals to science lovers.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">79. You're moving me without force—how's that for impossible?</div><div class="why">Physics-based lines flatter with logic-defying charm.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">80. You must be faster than light, because my heart skipped ahead.</div><div class="why">Physics-based lines flatter with logic-defying charm.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">81. Are you gravity? Because I'm falling way too fast for you.</div><div class="why">Combines physics concepts with romantic admiration for clever flattery.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">82. You broke Newton's third law—because I felt something, and you didn't push back.</div><div class="why">Flirty and intellectual—it appeals to science lovers.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">83. You're moving me without force—how's that for impossible?</div><div class="why">Flirty and intellectual—it appeals to science lovers.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">84. You distort space and time every time you smile.</div><div class="why">Flirty and intellectual—it appeals to science lovers.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">85. You're hotter than the core of a neutron star.</div><div class="why">Uses smart humor to keep things interesting.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">86. You broke Newton's third law—because I felt something, and you didn't push back.</div><div class="why">Physics-based lines flatter with logic-defying charm.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">87. Are we entangled particles? Because no matter the distance, I feel you.</div><div class="why">Makes the listener feel like an extraordinary phenomenon.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">88. Even Einstein couldn’t explain the pull you have on me.</div><div class="why">Physics-based lines flatter with logic-defying charm.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">89. You're moving me without force—how's that for impossible?</div><div class="why">Creates intrigue with playful science metaphors.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">90. You must be faster than light, because my heart skipped ahead.</div><div class="why">Makes the listener feel like an extraordinary phenomenon.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">91. You distort space and time every time you smile.</div><div class="why">Breaks the mold of traditional pickup lines by referencing real theories.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">92. If beauty were mass, you'd bend spacetime.</div><div class="why">Breaks the mold of traditional pickup lines by referencing real theories.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">93. Are we entangled particles? Because no matter the distance, I feel you.</div><div class="why">Flirty and intellectual—it appeals to science lovers.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">94. You broke Newton's third law—because I felt something, and you didn't push back.</div><div class="why">Combines physics concepts with romantic admiration for clever flattery.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">95. You're hotter than the core of a neutron star.</div><div class="why">Combines physics concepts with romantic admiration for clever flattery.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">96. Even Einstein couldn’t explain the pull you have on me.</div><div class="why">Creates intrigue with playful science metaphors.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">97. You're moving me without force—how's that for impossible?</div><div class="why">Makes the listener feel like an extraordinary phenomenon.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">98. You distort space and time every time you smile.</div><div class="why">Breaks the mold of traditional pickup lines by referencing real theories.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">99. Are you gravity? Because I'm falling way too fast for you.</div><div class="why">Physics-based lines flatter with logic-defying charm.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">100. You must be faster than light, because my heart skipped ahead.</div><div class="why">Physics-based lines flatter with logic-defying charm.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div></div>
-<script>
-function copyText(button) {
-    const card = button.closest('.card');
-    const text = card.querySelector('.pickup-line').innerText;
-    // Remove leading number and dot if present
-    const cleaned = text.replace(/^\d+\.\s*/, '');
-    navigator.clipboard.writeText(cleaned).then(() => {
-        button.textContent = "Copied!";
-        setTimeout(() => { button.textContent = "Copy"; }, 2000);
+  <header class="site-header">
+    <a href="#" class="logo">Charm <span>SCRIPTS</span></a>
+  </header>
+
+  <div class="page-header">
+    <h1>100 Pickup Lines That Break the Laws of Physics</h1>
+    <p>Clever, bold, and charming lines to make an impression</p>
+  </div>
+
+  <div class="grid">
+
+	<div class="card"><div class="pickup-line">1. You're moving me without force—how's that for impossible?</div><div class="why">Uses smart humor to keep things interesting.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">2. You broke Newton's third law—because I felt something, and you didn't push back.</div><div class="why">Combines physics concepts with romantic admiration for clever flattery.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">3. Are we entangled particles? Because no matter the distance, I feel you.</div><div class="why">Flirty and intellectual—it appeals to science lovers.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">4. If beauty were mass, you'd bend spacetime.</div><div class="why">Physics-based lines flatter with logic-defying charm.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">5. You're hotter than the core of a neutron star.</div><div class="why">Breaks the mold of traditional pickup lines by referencing real theories.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">6. You're the paradox my theories can’t solve.</div><div class="why">Makes the listener feel like an extraordinary phenomenon.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">7. You distort space and time every time you smile.</div><div class="why">Creates intrigue with playful science metaphors.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">8. Even Einstein couldn’t explain the pull you have on me.</div><div class="why">Combines physics concepts with romantic admiration for clever flattery.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">9. Are you gravity? Because I'm falling way too fast for you.</div><div class="why">Flirty and intellectual—it appeals to science lovers.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">10. You must be faster than light, because my heart skipped ahead.</div><div class="why">Physics-based lines flatter with logic-defying charm.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">11. You're moving me without force—how's that for impossible?</div><div class="why">Creates intrigue with playful science metaphors.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">12. You're the paradox my theories can’t solve.</div><div class="why">Physics-based lines flatter with logic-defying charm.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">13. You're moving me without force—how's that for impossible?</div><div class="why">Creates intrigue with playful science metaphors.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">14. You distort space and time every time you smile.</div><div class="why">Uses smart humor to keep things interesting.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">15. You're hotter than the core of a neutron star.</div><div class="why">Flirty and intellectual—it appeals to science lovers.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">16. Even Einstein couldn’t explain the pull you have on me.</div><div class="why">Physics-based lines flatter with logic-defying charm.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">17. You're moving me without force—how's that for impossible?</div><div class="why">Flirty and intellectual—it appeals to science lovers.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">18. Are you gravity? Because I'm falling way too fast for you.</div><div class="why">Uses smart humor to keep things interesting.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">19. You're moving me without force—how's that for impossible?</div><div class="why">Flirty and intellectual—it appeals to science lovers.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">20. You must be faster than light, because my heart skipped ahead.</div><div class="why">Makes the listener feel like an extraordinary phenomenon.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">21. You distort space and time every time you smile.</div><div class="why">Uses smart humor to keep things interesting.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">22. You broke Newton's third law—because I felt something, and you didn't push back.</div><div class="why">Uses smart humor to keep things interesting.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">23. You're moving me without force—how's that for impossible?</div><div class="why">Physics-based lines flatter with logic-defying charm.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">24. Even Einstein couldn’t explain the pull you have on me.</div><div class="why">Physics-based lines flatter with logic-defying charm.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">25. You're hotter than the core of a neutron star.</div><div class="why">Uses smart humor to keep things interesting.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">26. You broke Newton's third law—because I felt something, and you didn't push back.</div><div class="why">Breaks the mold of traditional pickup lines by referencing real theories.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">27. Are you gravity? Because I'm falling way too fast for you.</div><div class="why">Breaks the mold of traditional pickup lines by referencing real theories.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">28. You distort space and time every time you smile.</div><div class="why">Combines physics concepts with romantic admiration for clever flattery.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">29. You're moving me without force—how's that for impossible?</div><div class="why">Breaks the mold of traditional pickup lines by referencing real theories.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">30. You must be faster than light, because my heart skipped ahead.</div><div class="why">Combines physics concepts with romantic admiration for clever flattery.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">31. You're moving me without force—how's that for impossible?</div><div class="why">Uses smart humor to keep things interesting.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">32. Even Einstein couldn’t explain the pull you have on me.</div><div class="why">Creates intrigue with playful science metaphors.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">33. Are we entangled particles? Because no matter the distance, I feel you.</div><div class="why">Flirty and intellectual—it appeals to science lovers.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">34. You broke Newton's third law—because I felt something, and you didn't push back.</div><div class="why">Breaks the mold of traditional pickup lines by referencing real theories.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">35. You distort space and time every time you smile.</div><div class="why">Combines physics concepts with romantic admiration for clever flattery.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">36. Are you gravity? Because I'm falling way too fast for you.</div><div class="why">Creates intrigue with playful science metaphors.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">37. You're moving me without force—how's that for impossible?</div><div class="why">Combines physics concepts with romantic admiration for clever flattery.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">38. You broke Newton's third law—because I felt something, and you didn't push back.</div><div class="why">Flirty and intellectual—it appeals to science lovers.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">39. Are we entangled particles? Because no matter the distance, I feel you.</div><div class="why">Creates intrigue with playful science metaphors.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">40. You must be faster than light, because my heart skipped ahead.</div><div class="why">Uses smart humor to keep things interesting.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">41. You're moving me without force—how's that for impossible?</div><div class="why">Creates intrigue with playful science metaphors.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">42. You distort space and time every time you smile.</div><div class="why">Flirty and intellectual—it appeals to science lovers.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">43. You're moving me without force—how's that for impossible?</div><div class="why">Physics-based lines flatter with logic-defying charm.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">44. If beauty were mass, you'd bend spacetime.</div><div class="why">Breaks the mold of traditional pickup lines by referencing real theories.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">45. Are you gravity? Because I'm falling way too fast for you.</div><div class="why">Creates intrigue with playful science metaphors.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">46. You broke Newton's third law—because I felt something, and you didn't push back.</div><div class="why">Uses smart humor to keep things interesting.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">47. You're moving me without force—how's that for impossible?</div><div class="why">Uses smart humor to keep things interesting.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">48. Even Einstein couldn’t explain the pull you have on me.</div><div class="why">Creates intrigue with playful science metaphors.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">49. You distort space and time every time you smile.</div><div class="why">Makes the listener feel like an extraordinary phenomenon.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">50. You must be faster than light, because my heart skipped ahead.</div><div class="why">Combines physics concepts with romantic admiration for clever flattery.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">51. Are we entangled particles? Because no matter the distance, I feel you.</div><div class="why">Combines physics concepts with romantic admiration for clever flattery.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">52. If beauty were mass, you'd bend spacetime.</div><div class="why">Uses smart humor to keep things interesting.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">53. You're moving me without force—how's that for impossible?</div><div class="why">Combines physics concepts with romantic admiration for clever flattery.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">54. Are you gravity? Because I'm falling way too fast for you.</div><div class="why">Physics-based lines flatter with logic-defying charm.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">55. You're hotter than the core of a neutron star.</div><div class="why">Makes the listener feel like an extraordinary phenomenon.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">56. Even Einstein couldn’t explain the pull you have on me.</div><div class="why">Combines physics concepts with romantic admiration for clever flattery.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">57. Are we entangled particles? Because no matter the distance, I feel you.</div><div class="why">Creates intrigue with playful science metaphors.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">58. You broke Newton's third law—because I felt something, and you didn't push back.</div><div class="why">Breaks the mold of traditional pickup lines by referencing real theories.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">59. You're moving me without force—how's that for impossible?</div><div class="why">Combines physics concepts with romantic admiration for clever flattery.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">60. You must be faster than light, because my heart skipped ahead.</div><div class="why">Physics-based lines flatter with logic-defying charm.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">61. You're moving me without force—how's that for impossible?</div><div class="why">Creates intrigue with playful science metaphors.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">62. You broke Newton's third law—because I felt something, and you didn't push back.</div><div class="why">Flirty and intellectual—it appeals to science lovers.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">63. Are you gravity? Because I'm falling way too fast for you.</div><div class="why">Flirty and intellectual—it appeals to science lovers.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">64. Even Einstein couldn’t explain the pull you have on me.</div><div class="why">Breaks the mold of traditional pickup lines by referencing real theories.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">65. You're hotter than the core of a neutron star.</div><div class="why">Makes the listener feel like an extraordinary phenomenon.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">66. You're the paradox my theories can’t solve.</div><div class="why">Makes the listener feel like an extraordinary phenomenon.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">67. You're moving me without force—how's that for impossible?</div><div class="why">Combines physics concepts with romantic admiration for clever flattery.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">68. If beauty were mass, you'd bend spacetime.</div><div class="why">Makes the listener feel like an extraordinary phenomenon.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">69. Are we entangled particles? Because no matter the distance, I feel you.</div><div class="why">Uses smart humor to keep things interesting.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">70. You must be faster than light, because my heart skipped ahead.</div><div class="why">Creates intrigue with playful science metaphors.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">71. You're moving me without force—how's that for impossible?</div><div class="why">Flirty and intellectual—it appeals to science lovers.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">72. Are you gravity? Because I'm falling way too fast for you.</div><div class="why">Creates intrigue with playful science metaphors.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">73. You're moving me without force—how's that for impossible?</div><div class="why">Combines physics concepts with romantic admiration for clever flattery.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">74. You broke Newton's third law—because I felt something, and you didn't push back.</div><div class="why">Makes the listener feel like an extraordinary phenomenon.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">75. You're hotter than the core of a neutron star.</div><div class="why">Flirty and intellectual—it appeals to science lovers.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">76. If beauty were mass, you'd bend spacetime.</div><div class="why">Physics-based lines flatter with logic-defying charm.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">77. You distort space and time every time you smile.</div><div class="why">Creates intrigue with playful science metaphors.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">78. You're the paradox my theories can’t solve.</div><div class="why">Flirty and intellectual—it appeals to science lovers.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">79. You're moving me without force—how's that for impossible?</div><div class="why">Physics-based lines flatter with logic-defying charm.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">80. You must be faster than light, because my heart skipped ahead.</div><div class="why">Physics-based lines flatter with logic-defying charm.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">81. Are you gravity? Because I'm falling way too fast for you.</div><div class="why">Combines physics concepts with romantic admiration for clever flattery.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">82. You broke Newton's third law—because I felt something, and you didn't push back.</div><div class="why">Flirty and intellectual—it appeals to science lovers.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">83. You're moving me without force—how's that for impossible?</div><div class="why">Flirty and intellectual—it appeals to science lovers.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">84. You distort space and time every time you smile.</div><div class="why">Flirty and intellectual—it appeals to science lovers.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">85. You're hotter than the core of a neutron star.</div><div class="why">Uses smart humor to keep things interesting.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">86. You broke Newton's third law—because I felt something, and you didn't push back.</div><div class="why">Physics-based lines flatter with logic-defying charm.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">87. Are we entangled particles? Because no matter the distance, I feel you.</div><div class="why">Makes the listener feel like an extraordinary phenomenon.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">88. Even Einstein couldn’t explain the pull you have on me.</div><div class="why">Physics-based lines flatter with logic-defying charm.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">89. You're moving me without force—how's that for impossible?</div><div class="why">Creates intrigue with playful science metaphors.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">90. You must be faster than light, because my heart skipped ahead.</div><div class="why">Makes the listener feel like an extraordinary phenomenon.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">91. You distort space and time every time you smile.</div><div class="why">Breaks the mold of traditional pickup lines by referencing real theories.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">92. If beauty were mass, you'd bend spacetime.</div><div class="why">Breaks the mold of traditional pickup lines by referencing real theories.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">93. Are we entangled particles? Because no matter the distance, I feel you.</div><div class="why">Flirty and intellectual—it appeals to science lovers.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">94. You broke Newton's third law—because I felt something, and you didn't push back.</div><div class="why">Combines physics concepts with romantic admiration for clever flattery.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">95. You're hotter than the core of a neutron star.</div><div class="why">Combines physics concepts with romantic admiration for clever flattery.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">96. Even Einstein couldn’t explain the pull you have on me.</div><div class="why">Creates intrigue with playful science metaphors.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">97. You're moving me without force—how's that for impossible?</div><div class="why">Makes the listener feel like an extraordinary phenomenon.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">98. You distort space and time every time you smile.</div><div class="why">Breaks the mold of traditional pickup lines by referencing real theories.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">99. Are you gravity? Because I'm falling way too fast for you.</div><div class="why">Physics-based lines flatter with logic-defying charm.</div><button class="copy-button" onclick="copyText(this)">Copy</button></div><div class="card"><div class="pickup-line">100. You must be faster than light, because my heart skipped ahead.</div><div class="why">Physics-based lines flatter with logic-defying charm.</div><button class="copy-button" onclick="copyText(this)">Copy</button>
+	
+  </div>
+
+
+  <!-- Floating Action Button -->
+  <div class="fab" onclick="scrollToTop()">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <!-- Copy Feedback -->
+  <div class="copy-feedback" id="copyFeedback">
+    Line copied to clipboard!
+  </div>
+
+  <footer>
+    <p>© 2023 Charmscripts | <a href="#">Terms</a> | <a href="#">Privacy</a></p>
+  </footer>
+
+  <script>
+    // Enhanced copy function with visual feedback
+    function copyText(button) {
+      const text = button.parentElement.querySelector('.pickup-line').innerText;
+      const cleanedText = text.replace(/^\d+\.\s*/, ''); // Remove leading number and dot
+      
+      navigator.clipboard.writeText(cleanedText).then(() => {
+        // Show feedback
+        const feedback = document.getElementById('copyFeedback');
+        feedback.style.display = 'block';
+        setTimeout(() => {
+          feedback.style.display = 'none';
+        }, 2000);
+        
+        // Button feedback
+        const icon = button.querySelector('i');
+        const originalIcon = icon.className;
+        button.disabled = true;
+        icon.className = 'fas fa-check';
+        button.innerHTML = `<i class="fas fa-check"></i> Copied!`;
+        
+        setTimeout(() => {
+          button.disabled = false;
+          icon.className = originalIcon;
+          button.innerHTML = `<i class="${originalIcon}"></i> Copy`;
+        }, 1500);
+      });
+    }
+
+    // Scroll to top function
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+
+    // Show/hide FAB based on scroll position
+    window.addEventListener('scroll', () => {
+      const fab = document.querySelector('.fab');
+      if (window.scrollY > 300) {
+        fab.style.display = 'flex';
+      } else {
+        fab.style.display = 'none';
+      }
     });
-}
-</script>
+
+    // Initialize - hide FAB initially
+    document.querySelector('.fab').style.display = 'none';
+  </script>
 </body>
 </html>
+
