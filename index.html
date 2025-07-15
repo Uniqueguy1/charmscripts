@@ -349,177 +349,209 @@
   </footer>
 
   <script src="https://js.paystack.co/v1/inline.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const modal = document.getElementById("payModal");
-      const unlockBtn = document.getElementById("unlockBtn");
-      const cardGrid = document.getElementById("cardGrid");
-      const loadingEl = document.getElementById("loading");
-      const searchInput = document.getElementById("searchInput");
-      const searchBtn = document.getElementById("searchBtn");
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // DOM Elements
+    const modal = document.getElementById("payModal");
+    const unlockBtn = document.getElementById("unlockBtn");
+    const cardGrid = document.getElementById("cardGrid");
+    const loadingEl = document.getElementById("loading");
+    const searchInput = document.getElementById("searchInput");
+    const searchBtn = document.getElementById("searchBtn");
+    const emailInput = document.getElementById("userEmail");
 
-      // All Cards Data - Fixed the locked status for free cards
-      const cardsData = [
-        { id: 1, title: "100 Pickup Lines for a Handsome Guy", img: "2675387.jpeg", url: "file1.html", locked: false }, // Changed to false
-        { id: 2, title: "100 Pickup Lines for a Beautiful Lady", img: "worlds-most-beautiful-nigerian-girl-jare-but-mofe-fb-png__700.jpg", url: "file2.html", locked: false }, // Changed to false
-        { id: 3, title: "100 Pickup Lines Painted with Passion", img: "I Portray The Feeling Of Ballet Dance In My Paintings To Show How Important Passion Is.jpeg", url: "file6.html", locked: true },
-        { id: 4, title: "Dude, Try This: Pickup Lines That Actually Work", img: "guy.jpeg", url: "file10.html", locked: true },
-        { id: 5, title: "100 Pickup Lines That Break the Laws of Physics", img: "istockphoto-936903524-612x612.jpg", url: "file3.html", locked: true },
-        { id: 6, title: "100 Pickup Lines That Belong in a Museum", img: "istockphoto-538483378-612x612.jpg", url: "file7.html", locked: false },
-        { id: 7, title: "Steal His Heart All Over Again – 100 Pickup Lines for Boyfriends", img: "girl.jpeg", url: "file8.html", locked: false },
-        { id: 8, title: "100 Pickup Lines from Another Dimension", img: "door-stretching-into-fantasy-world.png", url: "file4.html", locked: false },
-        { id: 9, title: "Pickup Lines for Shy Guys Who Still Want to Win", img: "shy.jpeg", url: "file9.html", locked: false }, // Changed to false
-        { id: 10, title: "Girl, Say This: Clever Pickup Lines to Break the Ice First", img: "jaizer-capangpangan-04SoDoueyF8-unsplash.jpg", url: "file11.html", locked: false },
-        { id: 11, title: "115 Pickup Lines That Are Bold, Flirty, and Actually Fun", img: "15 Pickup Lines That Are Bold, Flirty, and Actually Fun.png", url: "file12.html", locked: false },
-        { id: 12, title: "100 Pickup Lines from the Lab of Love", img: "steptodown.com557701.jpg", url: "file5.html", locked: true }
-      ];
+    // Card Data - Make sure locked status is correct for each card
+    const cardsData = [
+      { id: 1, title: "100 Pickup Lines for a Handsome Guy", img: "2675387.jpeg", url: "file1.html", locked: false },
+      { id: 2, title: "100 Pickup Lines for a Beautiful Lady", img: "worlds-most-beautiful-nigerian-girl-jare-but-mofe-fb-png__700.jpg", url: "file2.html", locked: false },
+      { id: 3, title: "100 Pickup Lines Painted with Passion", img: "I Portray The Feeling Of Ballet Dance In My Paintings To Show How Important Passion Is.jpeg", url: "file6.html", locked: true },
+      { id: 4, title: "Dude, Try This: Pickup Lines That Actually Work", img: "guy.jpeg", url: "file10.html", locked: true },
+      { id: 5, title: "100 Pickup Lines That Break the Laws of Physics", img: "istockphoto-936903524-612x612.jpg", url: "file3.html", locked: true },
+      { id: 6, title: "100 Pickup Lines That Belong in a Museum", img: "istockphoto-538483378-612x612.jpg", url: "file7.html", locked: false },
+      { id: 7, title: "Steal His Heart All Over Again – 100 Pickup Lines for Boyfriends", img: "girl.jpeg", url: "file8.html", locked: false },
+      { id: 8, title: "100 Pickup Lines from Another Dimension", img: "door-stretching-into-fantasy-world.png", url: "file4.html", locked: false },
+      { id: 9, title: "Pickup Lines for Shy Guys Who Still Want to Win", img: "shy.jpeg", url: "file9.html", locked: false },
+      { id: 10, title: "Girl, Say This: Clever Pickup Lines to Break the Ice First", img: "jaizer-capangpangan-04SoDoueyF8-unsplash.jpg", url: "file11.html", locked: false },
+      { id: 11, title: "115 Pickup Lines That Are Bold, Flirty, and Actually Fun", img: "15 Pickup Lines That Are Bold, Flirty, and Actually Fun.png", url: "file12.html", locked: false },
+      { id: 12, title: "100 Pickup Lines from the Lab of Love", img: "steptodown.com557701.jpg", url: "file5.html", locked: true }
+    ];
 
-      // Render Cards - Fixed the element creation logic
-      function renderCards(filter = '') {
-        loadingEl.style.display = 'block';
-        cardGrid.innerHTML = '';
+    // Initialize the page
+    initPage();
+
+    function initPage() {
+      // Check payment status and update UI
+      updatePaymentStatus();
+      
+      // Load and render cards
+      renderCards();
+      
+      // Set up event listeners
+      setupEventListeners();
+    }
+
+    function updatePaymentStatus() {
+      const isPaid = localStorage.getItem("charmscripts_paid") === "true";
+      unlockBtn.textContent = isPaid ? '❤️ Support Us Again' : '🔓 Unlock All Premium Lines – ₦1000';
+    }
+
+    function renderCards(filter = '') {
+      loadingEl.style.display = 'block';
+      cardGrid.innerHTML = '';
+      
+      setTimeout(() => {
+        const filteredCards = filter 
+          ? cardsData.filter(card => card.title.toLowerCase().includes(filter.toLowerCase()))
+          : cardsData;
         
-        setTimeout(() => {
-          const filteredCards = filter 
-            ? cardsData.filter(card => 
-                card.title.toLowerCase().includes(filter.toLowerCase()))
-            : cardsData;
-          
-          if (filteredCards.length === 0) {
-            cardGrid.innerHTML = '<p style="grid-column:1/-1;text-align:center;">No results found. Try another search!</p>';
-          } else {
-            filteredCards.forEach(card => {
-              // Always create anchor tags for clickable cards
-              const cardEl = document.createElement('a');
-              cardEl.className = `card ${card.locked ? 'locked' : ''}`;
-              cardEl.href = card.locked ? 'javascript:void(0)' : card.url;
-              
-              cardEl.innerHTML = `
-                <img src="${card.img}" loading="lazy" alt="${card.title}">
-                <h3>
-                  <span>${card.title}</span>
-                  ${card.locked ? '<span class="padlock">🔐</span>' : ''}
-                </h3>
-                <button class="favorite-btn" data-id="${card.id}">♥</button>
-              `;
-              cardGrid.appendChild(cardEl);
+        if (filteredCards.length === 0) {
+          cardGrid.innerHTML = '<p style="grid-column:1/-1;text-align:center;">No results found. Try another search!</p>';
+        } else {
+          filteredCards.forEach(card => {
+            const isPaid = localStorage.getItem("charmscripts_paid") === "true";
+            const isLocked = card.locked && !isPaid;
+            
+            // Create card element
+            const cardEl = document.createElement(isLocked ? 'div' : 'a');
+            cardEl.className = `card ${isLocked ? 'locked' : ''}`;
+            
+            if (!isLocked) {
+              cardEl.href = card.url;
+            } else {
+              cardEl.setAttribute('data-url', card.url);
+            }
+            
+            cardEl.innerHTML = `
+              <img src="${card.img}" loading="lazy" alt="${card.title}">
+              <h3>
+                <span>${card.title}</span>
+                ${isLocked ? '<span class="padlock">🔐</span>' : ''}
+              </h3>
+              <button class="favorite-btn" data-id="${card.id}">♥</button>
+            `;
+            
+            cardGrid.appendChild(cardEl);
+          });
+        }
+        
+        loadingEl.style.display = 'none';
+        attachCardEvents();
+      }, 500);
+    }
 
-              // Add click handler for locked cards
-              if (card.locked) {
-                cardEl.addEventListener('click', (e) => {
-                  e.preventDefault();
-                  if (localStorage.getItem("charmscripts_paid") === "true") {
-                    window.location.href = card.url;
-                  } else {
-                    showModal();
-                  }
-                });
-              }
-            });
+    function attachCardEvents() {
+      // Favorite button functionality
+      document.querySelectorAll('.favorite-btn').forEach(btn => {
+        const cardId = btn.getAttribute('data-id');
+        const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        
+        // Set initial active state
+        if (favorites.includes(cardId)) {
+          btn.classList.add('active');
+        }
+        
+        // Toggle favorite on click
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+          const index = favorites.indexOf(cardId);
+          
+          if (index > -1) {
+            favorites.splice(index, 1);
+            btn.classList.remove('active');
+          } else {
+            favorites.push(cardId);
+            btn.classList.add('active');
           }
           
-          loadingEl.style.display = 'none';
-          attachCardEvents();
-        }, 500);
-      }      
+          localStorage.setItem('favorites', JSON.stringify(favorites));
+        });
+      });
       
-      // Search Functionality
+      // Locked card click handling
+      document.querySelectorAll('.card.locked').forEach(card => {
+        card.addEventListener('click', () => {
+          const isPaid = localStorage.getItem("charmscripts_paid") === "true";
+          if (isPaid) {
+            window.location.href = card.getAttribute('data-url');
+          } else {
+            showModal();
+          }
+        });
+      });
+    }
+
+    function setupEventListeners() {
+      // Search functionality
       searchBtn.addEventListener('click', () => renderCards(searchInput.value));
       searchInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') renderCards(searchInput.value);
       });
-
-      // Favorites System
-      function attachCardEvents() {
-        document.querySelectorAll('.favorite-btn').forEach(btn => {
-          const cardId = btn.getAttribute('data-id');
-          const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-          if (favorites.includes(cardId)) btn.classList.add('active');
-          
-          btn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-            
-            if (favorites.includes(cardId)) {
-              favorites.splice(favorites.indexOf(cardId), 1);
-              btn.classList.remove('active');
-            } else {
-              favorites.push(cardId);
-              btn.classList.add('active');
-            }
-            
-            localStorage.setItem('favorites', JSON.stringify(favorites));
-          });
-        });
-
-        // Locked card click handling
-        document.querySelectorAll('.locked').forEach(card => {
-          card.addEventListener('click', () => {
-            if (localStorage.getItem("charmscripts_paid") === "true") {
-              window.location.href = card.getAttribute('data-url');
-            } else {
-              showModal();
-            }
-          });
-        });
-      }
-
-      // Modal Logic
-      function showModal() {
-        const emailField = document.getElementById("userEmail");
-        const savedEmail = localStorage.getItem("charmscripts_user_email");
-        if (savedEmail) emailField.value = savedEmail;
-        modal.style.display = "flex";
-      }
-
-      unlockBtn.addEventListener("click", showModal);
-      window.onclick = (e) => e.target === modal && (modal.style.display = "none");
-
-      // Paystack Integration
-      // Paystack Integration - Fixed localStorage saving
-      window.payNow = function() {
-        const email = document.getElementById("userEmail").value.trim();
-        if (!email.includes('@')) return alert("Please enter a valid email!");
-        
-        localStorage.setItem("charmscripts_user_email", email);
-        unlockBtn.innerHTML = '<div class="loading-spinner" style="border-top-color:white;display:inline-block;"></div> Processing...';
-
-        PaystackPop.setup({
-          key: 'pk_live_08eeefd09f6ec122ce22e17a8d0b31f6b33f2897',
-          email: email,
-          amount: 100000,
-          currency: 'NGN',
-          callback: function(response) {
-            // Only save to localStorage after successful payment
-            if (response.status === 'success') {
-              localStorage.setItem("charmscripts_paid", "true");
-              modal.style.display = "none";
-              unlockBtn.innerHTML = '🎉 Unlocked! Browse Premium';
-              setTimeout(() => { 
-                unlockBtn.textContent = '❤️ Support Us Again'; 
-                renderCards(searchInput.value); // Refresh cards to update locked status
-              }, 3000);
-            }
-          },
-          onClose: function() {
-            unlockBtn.textContent = '🔓 Unlock All Premium Lines – ₦1000';
-          }
-        }).openIframe();
-      }
-
-      // Initialize - Check payment status on load
-      function checkPaymentStatus() {
-        const paid = localStorage.getItem("charmscripts_paid") === "true";
-        if (paid) {
-          unlockBtn.textContent = '❤️ Support Us Again';
+      
+      // Unlock button
+      unlockBtn.addEventListener('click', showModal);
+      
+      // Modal close when clicking outside
+      window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.style.display = "none";
         }
-      }
+      });
+    }
 
-      // Initialize
-      checkPaymentStatus();
-      renderCards();
-    });
-    });
-  </script>
+    function showModal() {
+      const savedEmail = localStorage.getItem("charmscripts_user_email");
+      if (savedEmail) {
+        emailInput.value = savedEmail;
+      }
+      modal.style.display = "flex";
+    }
+
+    window.payNow = function() {
+      const email = emailInput.value.trim();
+      
+      // Validate email
+      if (!email || !email.includes('@')) {
+        alert("Please enter a valid email address!");
+        return;
+      }
+      
+      // Save email to localStorage
+      localStorage.setItem("charmscripts_user_email", email);
+      
+      // Update button to show processing state
+      unlockBtn.innerHTML = '<div class="loading-spinner" style="border-top-color:white;display:inline-block;"></div> Processing...';
+      
+      // Initialize Paystack payment
+      const paymentHandler = PaystackPop.setup({
+        key: 'pk_live_08eeefd09f6ec122ce22e17a8d0b31f6b33f2897',
+        email: email,
+        amount: 100000, // ₦1000 in kobo
+        currency: 'NGN',
+        callback: function(response) {
+          // Only proceed if payment was successful
+          if (response.status === 'success') {
+            localStorage.setItem("charmscripts_paid", "true");
+            modal.style.display = "none";
+            
+            // Update UI
+            unlockBtn.innerHTML = '🎉 Unlocked! Browse Premium';
+            setTimeout(() => {
+              unlockBtn.textContent = '❤️ Support Us Again';
+              renderCards(searchInput.value); // Refresh cards to show unlocked state
+            }, 3000);
+          }
+        },
+        onClose: function() {
+          // Reset button if payment is cancelled
+          unlockBtn.textContent = '🔓 Unlock All Premium Lines – ₦1000';
+        }
+      });
+      
+      // Open payment modal
+      paymentHandler.openIframe();
+    }
+  });
+</script>
 </body>
 </html>
