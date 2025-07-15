@@ -231,7 +231,7 @@
 
   <script>
     // Enhanced copy function with visual feedback
- function copyText(button) {
+function copyText(button) {
   const text = button.parentElement.querySelector('.pickup-line').innerText;
   const cleanedText = text.replace(/^\d+\.\s*/, '');
 
@@ -255,7 +255,6 @@
     alert("Copy failed: " + err);
   });
 }
-
     // Scroll to top function
     function scrollToTop() {
       window.scrollTo({
