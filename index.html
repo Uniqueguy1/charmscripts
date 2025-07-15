@@ -273,18 +273,19 @@
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
-  .ad-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-      width: 100%;
-    }
+.ad-container {
+  display: grid;
+  place-items: center; /* shorthand for justify + align center */
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
 
-    .ad-slot {
-      width: 100%;
-      max-width: 468px;
-    }
+.ad-slot {
+  width: 100%;
+  max-width: 468px;
+}
+
     /* Mobile Tweaks */
     @media (max-width: 768px) {
       .logo {
